@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>iBhavan v1 — Original Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:#FAFAF8;color:#0F1F4A;-webkit-font-smoothing:antialiased;font-weight:400;line-height:1.55}
+    h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;font-weight:600;letter-spacing:-0.02em;line-height:1.1;color:#0F1F4A}
+    input,textarea,select,button{font-family:inherit}
+    button{cursor:pointer;border:none;background:none}
+
+    .v1-back{position:fixed;top:16px;right:16px;z-index:3000;background:#0F1F4A;color:#fff;border-radius:999px;padding:0.6rem 1.1rem;font-size:0.8rem;font-weight:500;box-shadow:0 6px 20px rgba(15,31,74,0.25);display:flex;align-items:center;gap:0.5rem;transition:transform 0.2s,background 0.2s}
+    .v1-back:hover{background:#F472B6;transform:translateY(-2px)}
+
+    .v1-badge{position:fixed;top:16px;left:16px;z-index:3000;background:rgba(255,255,255,0.95);color:#0F1F4A;border:1px solid rgba(15,31,74,0.1);border-radius:999px;padding:0.4rem 0.9rem;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;backdrop-filter:blur(10px);display:flex;align-items:center;gap:0.5rem}
+    .v1-badge .dot{width:6px;height:6px;border-radius:50%;background:#F472B6}
+  </style>
+</head>
+<body>
+  <a href="iBhavan Website.html" class="v1-back">← Back to v3</a>
+  <div class="v1-badge"><span class="dot"></span>Version 1 · Archive</div>
+  <div id="root"></div>
+
+<script type="text/babel" src="components/IBhavanData.jsx"></script>
+<script type="text/babel" src="components/IBhavanNav.jsx"></script>
+<script type="text/babel" src="components/IBhavanHome.jsx"></script>
+<script type="text/babel" src="components/IBhavanAbout.jsx"></script>
+<script type="text/babel" src="components/IBhavanSmartHome.jsx"></script>
+<script type="text/babel" src="components/IBhavanHR.jsx"></script>
+<script type="text/babel" src="components/IBhavanIT.jsx"></script>
+<script type="text/babel" src="components/IBhavanProducts.jsx"></script>
+<script type="text/babel" src="components/IBhavanContact.jsx"></script>
+<script type="text/babel" src="components/IBhavanCareers.jsx"></script>
+
+<script type="text/babel">
+const V1App = () => {
+  const [currentPage, setCurrentPage] = React.useState('home');
+  const pages = {
+    home: IBhavanHome, about: IBhavanAbout,
+    'smart-home': IBhavanSmartHome, 'hr-solutions': IBhavanHR, 'it-solutions': IBhavanIT,
+    products: IBhavanProducts, contact: IBhavanContact, careers: IBhavanCareers,
+  };
+  const Page = pages[currentPage] || IBhavanHome;
+  return (
+    <div>
+      <IBhavanNav currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Page setCurrentPage={setCurrentPage} />
+    </div>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(<V1App />);
+</script>
+</body>
+</html>
