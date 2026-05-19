@@ -105,7 +105,8 @@ export const GetInTouchModal = ({ open, onClose }) => {
   const typeOpts = [
     { id: 'smart', num: '01', title: 'Smart Home Automation', desc: 'Automation, security, climate.' },
     { id: 'hr', num: '02', title: 'HR Services', desc: 'Recruitment, payroll, compliance.' },
-    { id: 'it', num: '03', title: 'IT Solutions', desc: 'Software, websites, cloud.' }
+    { id: 'it', num: '03', title: 'IT Solutions', desc: 'Software, websites, cloud.' },
+    { id: 'business', num: '04', title: 'Business Solutions', desc: 'Strategy, operations, finance.' }
   ];
 
   const submit = (e) => {

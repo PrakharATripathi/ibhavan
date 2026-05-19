@@ -39,10 +39,10 @@ export const IBhavanNav2 = ({ currentPage, navigate, openGetInTouch, theme, togg
     <nav className={'nav' + (scrolled ? ' scrolled' : '')}>
       <div className="nav-inner">
         <div className="nav-logo" onClick={() => go('home')}>
-          <img src="uploads/Loho.png" alt="" />
+          <img src="/uploads/Loho.png" alt="" />
           <div className="logo-stack">
             <div className="name" style={{ fontSize: "25px", fontFamily: "Instrument Serif" }}>iBhavan</div>
-            <div className="slogan">Integrated Solutions for Modern Living</div>
+            <div className="slogan">Integrated Solutions</div>
           </div>
         </div>
 

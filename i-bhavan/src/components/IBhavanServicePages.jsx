@@ -53,7 +53,7 @@ export const ServicePage = ({ slug, navigate, openGetInTouch }) => {
               <span style={{ width: 48, height: 48, borderRadius: '50%', background: 'rgba(255,255,255,0.14)', backdropFilter: 'blur(8px)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '1.1rem' }}>
                 <i className={'fa-solid ' + data.icon}></i>
               </span>
-              <span style={{ fontSize: '0.78rem', letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600, color: 'rgba(255,255,255,0.85)' }}>§ {num} · {data.tagline}</span>
+              <span style={{ fontSize: '0.78rem', letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600, color: 'rgba(255,255,255,0.85)' }}>{num} · {data.tagline}</span>
             </div>
           </Reveal>
           <Reveal delay={140}>
@@ -131,7 +131,7 @@ export const IBhavanAbout2 = ({ navigate, openGetInTouch }) => {
           <div className="orb orb-3" style={{ bottom: '10%', left: '5%' }}></div>
         </div>
         <div className="container">
-          <Reveal><div className="num" style={{ marginBottom: '2rem' }}>§ About</div></Reveal>
+          <Reveal><div className="eyebrow eyebrow-dot" style={{ marginBottom: '2rem' }}>About</div></Reveal>
           <Reveal delay={100}>
             <h1 style={{ maxWidth: 1200 }}>
               A decade of building <span className="italic accent-mark">trust</span>,<br />

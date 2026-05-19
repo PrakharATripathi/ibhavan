@@ -7,8 +7,11 @@ export const IBhavanFooter = ({ navigate, openGetInTouch }) => {
         <div className="footer-grid">
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.7rem', marginBottom: '1.25rem', cursor: 'pointer' }} onClick={() => navigate('home')}>
-              <img src="uploads/Loho.png" alt="" style={{ height: 38, width: 38, objectFit: 'cover', borderRadius: 4 }} />
-              <span style={{ fontFamily: 'Instrument Serif,serif', fontSize: '1.65rem', color: 'var(--text)', lineHeight: 1 }}>iBhavan</span>
+              <img src="/uploads/Loho.png" alt="" style={{ height: 38, width: 38, objectFit: 'cover', objectPosition: 'left center', borderRadius: 4 }} />
+              <div className="logo-stack">
+                <div className="name" style={{ fontFamily: 'Instrument Serif,serif', fontSize: '1.65rem', color: 'var(--text)', lineHeight: 1 }}>iBhavan</div>
+                <div className="slogan" style={{ fontSize: '0.65rem', color: 'var(--text-dim)', letterSpacing: '0.06em', fontWeight: 400, lineHeight: 1 }}>Integrated Solutions</div>
+              </div>
             </div>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.65, maxWidth: 360, marginBottom: '1.5rem' }}>
               Integrated solutions for modern living and enterprise operations. Smart home automation, HR, IT, and business advisory under one accountable roof.
@@ -43,7 +46,7 @@ export const IBhavanFooter = ({ navigate, openGetInTouch }) => {
           <div>
             <div style={{ fontSize: '0.7rem', letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600, color: 'var(--text-dim)', marginBottom: '1.25rem' }}>Contact</div>
             <div style={{ fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '1.25rem' }}>
-              Bengaluru HQ<br />1st Floor, Indiranagar<br />Bengaluru, Karnataka 560038
+              Ahmedabad, Gujarat
             </div>
             <button onClick={openGetInTouch} className="btn-link" style={{ fontSize: '0.88rem' }}>Get in touch <span className="arrow">→</span></button>
           </div>

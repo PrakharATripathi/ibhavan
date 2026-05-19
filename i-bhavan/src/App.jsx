@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { IBhavanNav2 } from './components/IBhavanNav2.jsx';
 import { IBhavanFooter } from './components/IBhavanFooter.jsx';
 import { GetInTouchModal } from './components/IBhavanShared.jsx';
@@ -7,14 +8,8 @@ import { ServicePage, IBhavanAbout2 } from './components/IBhavanServicePages.jsx
 import { IBhavanProducts2, IBhavanBlogs, IBhavanCareers2, IBhavanJobDetail } from './components/IBhavanOtherPages.jsx';
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('ibhavan_page') || 'home';
-    }
-    return 'home';
-  });
-  const [jobId, setJobId] = useState(null);
-  const [pageKey, setPageKey] = useState(0);
+  const location = useLocation();
+  const navigateHook = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -24,45 +19,53 @@ const App = () => {
   });
 
   useEffect(() => {
-    localStorage.setItem('ibhavan_page', currentPage);
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('ibhavan_theme', theme);
-  }, [currentPage, theme]);
+  }, [theme]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
 
   const navigate = (id) => {
-    setJobId(null);
-    setCurrentPage(id);
-    setPageKey(k => k + 1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (id === 'home') navigateHook('/');
+    else navigateHook(`/${id}`);
   };
 
   const openGetInTouch = () => setModalOpen(true);
   const toggleTheme = () => setTheme(t => t === 'light' ? 'dark' : 'light');
 
-  let PageContent;
-  if (jobId) {
-    PageContent = <IBhavanJobDetail jobId={jobId} setJobId={setJobId} navigate={navigate} openGetInTouch={openGetInTouch} />;
-  } else if (currentPage === 'home') {
-    PageContent = <IBhavanHome2 navigate={navigate} openGetInTouch={openGetInTouch} />;
-  } else if (currentPage === 'about') {
-    PageContent = <IBhavanAbout2 navigate={navigate} openGetInTouch={openGetInTouch} />;
-  } else if (['smart-home','hr-solutions','it-solutions','business-solutions'].includes(currentPage)) {
-    PageContent = <ServicePage slug={currentPage} navigate={navigate} openGetInTouch={openGetInTouch} />;
-  } else if (currentPage === 'products') {
-    PageContent = <IBhavanProducts2 navigate={navigate} openGetInTouch={openGetInTouch} />;
-  } else if (currentPage === 'blogs') {
-    PageContent = <IBhavanBlogs navigate={navigate} openGetInTouch={openGetInTouch} />;
-  } else if (currentPage === 'careers') {
-    PageContent = <IBhavanCareers2 navigate={navigate} openGetInTouch={openGetInTouch} setJobId={setJobId} />;
-  } else {
-    PageContent = <IBhavanHome2 navigate={navigate} openGetInTouch={openGetInTouch} />;
-  }
+  // Map pathname to currentPage for navbar active state
+  const pathname = location.pathname;
+  let currentPage = 'home';
+  if (pathname === '/') currentPage = 'home';
+  else if (pathname === '/about') currentPage = 'about';
+  else if (pathname === '/smart-home') currentPage = 'smart-home';
+  else if (pathname === '/hr-solutions') currentPage = 'hr-solutions';
+  else if (pathname === '/it-solutions') currentPage = 'it-solutions';
+  else if (pathname === '/business-solutions') currentPage = 'business-solutions';
+  else if (pathname === '/products') currentPage = 'products';
+  else if (pathname === '/blogs') currentPage = 'blogs';
+  else if (pathname === '/careers' || pathname.startsWith('/careers/')) currentPage = 'careers';
 
   return (
     <div>
       <IBhavanNav2 currentPage={currentPage} navigate={navigate} openGetInTouch={openGetInTouch} theme={theme} toggleTheme={toggleTheme} />
-      <div key={pageKey + '-' + (jobId || 'page')} className="page-enter">
-        {PageContent}
+      <div key={location.pathname} className="page-enter">
+        <Routes>
+          <Route path="/" element={<IBhavanHome2 navigate={navigate} openGetInTouch={openGetInTouch} />} />
+          <Route path="/home" element={<IBhavanHome2 navigate={navigate} openGetInTouch={openGetInTouch} />} />
+          <Route path="/about" element={<IBhavanAbout2 navigate={navigate} openGetInTouch={openGetInTouch} />} />
+          <Route path="/smart-home" element={<ServicePage slug="smart-home" navigate={navigate} openGetInTouch={openGetInTouch} />} />
+          <Route path="/hr-solutions" element={<ServicePage slug="hr-solutions" navigate={navigate} openGetInTouch={openGetInTouch} />} />
+          <Route path="/it-solutions" element={<ServicePage slug="it-solutions" navigate={navigate} openGetInTouch={openGetInTouch} />} />
+          <Route path="/business-solutions" element={<ServicePage slug="business-solutions" navigate={navigate} openGetInTouch={openGetInTouch} />} />
+          <Route path="/products" element={<IBhavanProducts2 navigate={navigate} openGetInTouch={openGetInTouch} />} />
+          <Route path="/blogs" element={<IBhavanBlogs navigate={navigate} openGetInTouch={openGetInTouch} />} />
+          <Route path="/careers" element={<IBhavanCareers2 navigate={navigate} openGetInTouch={openGetInTouch} />} />
+          <Route path="/careers/:jobId" element={<IBhavanJobDetail navigate={navigate} openGetInTouch={openGetInTouch} />} />
+          <Route path="*" element={<IBhavanHome2 navigate={navigate} openGetInTouch={openGetInTouch} />} />
+        </Routes>
         <IBhavanFooter navigate={navigate} openGetInTouch={openGetInTouch} />
       </div>
       <GetInTouchModal open={modalOpen} onClose={() => setModalOpen(false)} />

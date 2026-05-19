@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { IBHAVAN_PRODUCTS, IBHAVAN_BLOGS, IBHAVAN_JOBS, IBHAVAN_IMG } from '../data/IBhavanData.js';
 import { Reveal, Section, Modal, HomeCTA } from './IBhavanShared.jsx';
 
@@ -13,7 +14,7 @@ export const IBhavanProducts2 = ({ navigate, openGetInTouch }) => {
         <img src={IBHAVAN_IMG.product || 'https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=1800&auto=format&fit=crop'} alt="Products" loading="lazy" />
         <div className="service-hero-overlay"></div>
         <div className="service-hero-inner">
-          <Reveal><div className="num" style={{ marginBottom: '1.5rem', color: 'rgba(255,255,255,0.7)' }}>§ Products</div></Reveal>
+          <Reveal><div className="eyebrow eyebrow-dot" style={{ marginBottom: '1.5rem', color: 'rgba(255,255,255,0.85)' }}>Products</div></Reveal>
           <Reveal delay={80}>
             <h1 style={{ maxWidth: 1100, fontFamily: "Instrument Serif" }}>
               Hardware for a <span className="italic" style={{ color: '#F05885', fontFamily: "Instrument Serif" }}>smarter home</span>.
@@ -66,11 +67,21 @@ export const IBhavanBlogs = ({ navigate, openGetInTouch }) => {
   const rest = blogs.slice(1);
   return (
     <div>
-      <section className="page-hero">
-        <div className="container">
-          <Reveal><div className="num" style={{ marginBottom: '2rem' }}>§ Blog</div></Reveal>
-          <Reveal delay={80}><h1 style={{ maxWidth: 1100, fontFamily: "Instrument Serif" }}>Notes on smart living, work, and <span className="italic accent-mark" style={{ fontFamily: "Instrument Serif" }}>technology</span>.</h1></Reveal>
-          <Reveal delay={160}><p className="lead" style={{ maxWidth: 620, marginTop: '2rem' }}>Field notes, deep dives, and practical guides from our specialists.</p></Reveal>
+      <section className="service-hero" style={{ minHeight: 'clamp(380px,50vh,520px)' }}>
+        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1800&auto=format&fit=crop" alt="Blog" loading="lazy" />
+        <div className="service-hero-overlay"></div>
+        <div className="service-hero-inner">
+          <Reveal><div className="eyebrow eyebrow-dot" style={{ marginBottom: '1.5rem', color: 'rgba(255,255,255,0.85)' }}>Blog</div></Reveal>
+          <Reveal delay={80}>
+            <h1 style={{ maxWidth: 1100, fontFamily: "Instrument Serif" }}>
+              Notes on smart living, work, and <span className="italic" style={{ color: '#F05885', fontFamily: "Instrument Serif" }}>technology</span>.
+            </h1>
+          </Reveal>
+          <Reveal delay={160}>
+            <p className="lead" style={{ marginTop: '2rem', maxWidth: 620 }}>
+              Field notes, deep dives, and practical guides from our specialists.
+            </p>
+          </Reveal>
         </div>
       </section>
       <Section>
@@ -138,18 +149,28 @@ export const IBhavanBlogs = ({ navigate, openGetInTouch }) => {
   );
 };
 
-export const IBhavanCareers2 = ({ navigate, openGetInTouch, setJobId }) => {
+export const IBhavanCareers2 = ({ navigate, openGetInTouch }) => {
   const [filter, setFilter] = useState('all');
   const jobs = IBHAVAN_JOBS;
   const depts = [...new Set(jobs.map((j) => j.dept))];
   const filtered = filter === 'all' ? jobs : jobs.filter((j) => j.dept === filter);
   return (
     <div>
-      <section className="page-hero">
-        <div className="container">
-          <Reveal><div className="num" style={{ marginBottom: '2rem' }}>§ Careers</div></Reveal>
-          <Reveal delay={80}><h1 style={{ maxWidth: 1100, fontFamily: "Instrument Serif" }}>Build the future with <span className="italic accent-mark" style={{ fontFamily: "Instrument Serif" }}>us</span>.</h1></Reveal>
-          <Reveal delay={160}><p className="lead" style={{ maxWidth: 620, marginTop: '2rem' }}>Join a team shipping meaningful work across three of India's fastest-growing verticals.</p></Reveal>
+      <section className="service-hero" style={{ minHeight: 'clamp(380px,50vh,520px)' }}>
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1800&auto=format&fit=crop" alt="Careers" loading="lazy" />
+        <div className="service-hero-overlay"></div>
+        <div className="service-hero-inner">
+          <Reveal><div className="eyebrow eyebrow-dot" style={{ marginBottom: '1.5rem', color: 'rgba(255,255,255,0.85)' }}>Careers</div></Reveal>
+          <Reveal delay={80}>
+            <h1 style={{ maxWidth: 1100, fontFamily: "Instrument Serif" }}>
+              Build the future with <span className="italic" style={{ color: '#F05885', fontFamily: "Instrument Serif" }}>us</span>.
+            </h1>
+          </Reveal>
+          <Reveal delay={160}>
+            <p className="lead" style={{ marginTop: '2rem', maxWidth: 620 }}>
+              Join a team shipping meaningful work across three of India's fastest-growing verticals.
+            </p>
+          </Reveal>
         </div>
       </section>
       <Section>
@@ -163,7 +184,7 @@ export const IBhavanCareers2 = ({ navigate, openGetInTouch, setJobId }) => {
         <ul className="link-list" style={{ borderTop: '1px solid var(--border)' }}>
           {filtered.map((j, i) => (
             <Reveal key={j.id} delay={i % 5 * 40}>
-              <li onClick={() => setJobId(j.id)} style={{ padding: 'clamp(1.4rem,2.5vw,1.75rem) 0', alignItems: 'flex-start' }}>
+              <li onClick={() => navigate(`careers/${j.id}`)} style={{ padding: 'clamp(1.4rem,2.5vw,1.75rem) 0', alignItems: 'flex-start' }}>
                 <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'auto 1fr auto', gap: 'clamp(1.25rem,2.5vw,2rem)', alignItems: 'flex-start', minWidth: 0 }}>
                   <span className="num" style={{ minWidth: 32, paddingTop: '0.25rem' }}>0{i + 1}</span>
                   <div style={{ minWidth: 0 }}>
@@ -181,17 +202,17 @@ export const IBhavanCareers2 = ({ navigate, openGetInTouch, setJobId }) => {
           ))}
         </ul>
       </Section>
-      <HomeCTA openGetInTouch={openGetInTouch} navigate={navigate} secondaryAction={{ label: 'About us', onClick: () => navigate('about') }} />
     </div>
   );
 };
 
-export const IBhavanJobDetail = ({ jobId, navigate, setJobId, openGetInTouch }) => {
-  const job = IBHAVAN_JOBS.find((j) => j.id === jobId);
+export const IBhavanJobDetail = ({ navigate, openGetInTouch }) => {
+  const { jobId } = useParams();
+  const job = IBHAVAN_JOBS.find((j) => j.id === parseInt(jobId));
   const [applied, setApplied] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', phone: '', exp: '', cover: '' });
   const [errors, setErrors] = useState({});
-  if (!job) return <div style={{ padding: '10rem 2rem', textAlign: 'center', color: 'var(--text-muted)' }}>Job not found. <span onClick={() => {setJobId(null);navigate('careers');}} style={{ color: 'var(--accent)', cursor: 'pointer', fontWeight: 500 }}>Back to Careers</span></div>;
+  if (!job) return <div style={{ padding: '10rem 2rem', textAlign: 'center', color: 'var(--text-muted)' }}>Job not found. <span onClick={() => {navigate('careers');}} style={{ color: 'var(--accent)', cursor: 'pointer', fontWeight: 500 }}>Back to Careers</span></div>;
   const apply = (e) => {
     e.preventDefault();
     const er = {};
@@ -207,7 +228,7 @@ export const IBhavanJobDetail = ({ jobId, navigate, setJobId, openGetInTouch }) 
         <div className="container" style={{ maxWidth: 1180 }}>
           <Reveal>
             <div className="num" style={{ marginBottom: '2rem' }}>
-              <span style={{ cursor: 'pointer' }} onClick={() => {setJobId(null);navigate('careers');}}>Careers</span> / <span style={{ color: 'var(--text)' }}>{job.title}</span>
+              <span style={{ cursor: 'pointer' }} onClick={() => {navigate('careers');}}>Careers</span> / <span style={{ color: 'var(--text)' }}>{job.title}</span>
             </div>
           </Reveal>
           <Reveal delay={80}>
@@ -305,7 +326,7 @@ export const IBhavanJobDetail = ({ jobId, navigate, setJobId, openGetInTouch }) 
           </div>
         </div>
       </Section>
-      <HomeCTA openGetInTouch={openGetInTouch} navigate={navigate} secondaryAction={{ label: 'Back to careers', onClick: () => {setJobId(null);navigate('careers');} }} />
+      <HomeCTA openGetInTouch={openGetInTouch} navigate={navigate} secondaryAction={{ label: 'Back to careers', onClick: () => {navigate('careers');} }} />
     </div>
   );
 };

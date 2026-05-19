@@ -69,12 +69,12 @@ export const IBHAVAN_SERVICES = {
 
 export const IBHAVAN_PRODUCTS = [
   { id: 'p-hub', name: 'iBhavan Smart Hub', cat: 'Smart Home Automation', desc: 'Central controller for lights, climate, security & voice — works with Matter, Zigbee & Wi-Fi.', img: 'https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=900&auto=format&fit=crop' },
-  { id: 'p-cam', name: '4K Outdoor Smart Camera', cat: 'Security', desc: 'AI person & vehicle detection, colour night vision and on-device storage.', img: 'https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=900&auto=format&fit=crop&sat=-50' },
-  { id: 'p-lock', name: 'Biometric Smart Lock', cat: 'Security', desc: 'Fingerprint, PIN, RFID and remote unlock — built for Indian door frames.', img: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?q=80&w=900&auto=format&fit=crop' },
+  { id: 'p-cam', name: '4K Outdoor Smart Camera', cat: 'Security', desc: 'AI person & vehicle detection, colour night vision and on-device storage.', img: 'https://images.unsplash.com/photo-1528319725582-ddc096101511?q=80&w=900&auto=format&fit=crop' },
+  { id: 'p-lock', name: 'Biometric Smart Lock', cat: 'Security', desc: 'Fingerprint, PIN, RFID and remote unlock — built for Indian door frames.', img: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=900&auto=format&fit=crop' },
   { id: 'p-bulb', name: 'Tunable Smart Bulb', cat: 'Lighting', desc: '16M colours, warm-to-cool tuning, schedules and scene presets.', img: 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?q=80&w=900&auto=format&fit=crop' },
-  { id: 'p-thermo', name: 'Smart Thermostat', cat: 'Climate', desc: 'Geo-fenced cooling/heating, energy reports and HVAC integration.', img: 'https://images.unsplash.com/photo-1567925086094-2bd13bf85f5d?q=80&w=900&auto=format&fit=crop' },
+  { id: 'p-thermo', name: 'Smart Thermostat', cat: 'Climate', desc: 'Geo-fenced cooling/heating, energy reports and HVAC integration.', img: 'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=900&auto=format&fit=crop' },
   { id: 'p-curtain', name: 'Motorised Curtain Track', cat: 'Lifestyle', desc: 'Whisper-quiet motors, voice and app control, programmable wake-up scenes.', img: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=900&auto=format&fit=crop' },
-  { id: 'p-doorbell', name: 'Video Doorbell Pro', cat: 'Security', desc: 'Two-way audio, AI delivery detection, integrates with smart lock & lights.', img: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?q=80&w=900&auto=format&fit=crop&sat=-30' },
+  { id: 'p-doorbell', name: 'Video Doorbell Pro', cat: 'Security', desc: 'Two-way audio, AI delivery detection, integrates with smart lock & lights.', img: 'https://images.unsplash.com/photo-1621839673705-6617adf9e890?q=80&w=900&auto=format&fit=crop' },
   { id: 'p-meter', name: 'Energy Monitoring Meter', cat: 'Energy', desc: 'Real-time per-circuit consumption, anomaly alerts and solar-ready.', img: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=900&auto=format&fit=crop' },
 ];
 
