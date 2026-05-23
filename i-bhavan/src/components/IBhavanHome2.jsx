@@ -17,7 +17,7 @@ export const IBhavanHome2 = ({ navigate, openGetInTouch }) => {
     { n: 500, s: '+', l: 'Smart Homes Delivered' },
     { n: 10000, s: '+', l: 'Successful Placements' },
     { n: 150, s: '+', l: 'Enterprise Clients' },
-    { n: 12, s: '', l: 'Years in Business' }
+    { n: 7, s: '+', l: 'Years in Business' }
   ];
 
   const whyUs = [

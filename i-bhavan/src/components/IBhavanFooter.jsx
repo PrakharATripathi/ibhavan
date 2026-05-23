@@ -55,7 +55,7 @@ export const IBhavanFooter = ({ navigate, openGetInTouch }) => {
         <div className="hairline" style={{ margin: '3rem 0 2rem' }}></div>
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', fontSize: '0.82rem', color: 'var(--text-dim)' }}>
-          <div>© {new Date().getFullYear()} iBhavan. All rights reserved.</div>
+          <div>© 2019 iBhavan. All rights reserved.</div>
           <div style={{ display: 'flex', gap: '1.5rem' }}>
             <span style={{ cursor: 'pointer' }}>Privacy Policy</span>
             <span style={{ cursor: 'pointer' }}>Terms of Service</span>
